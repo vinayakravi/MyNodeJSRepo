@@ -42,7 +42,10 @@ module.exports = function(passport){
 	router.get('/home', isAuthenticated, function(req, res){
 		res.render('home', { user: req.user });
 	});
-
+	/* GET ROOM 2 */
+	router.get('/room2', isAuthenticated, function(req, res){
+		res.render('room2', { user: req.user });
+	});
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {
 		req.logout();
