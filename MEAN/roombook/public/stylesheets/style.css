@@ -48,11 +48,36 @@ h1.error-message{
 ul.user-details{
     list-style: none;
 }
-.table-cell {
+.table tbody>tr>td.table-cell{
+    vertical-align: middle;
     color:gray;
     font-size: 8pt;
-    word-wrap: break-word;
     word-break: break-all;
     text-align: center;
-    vertical-align: middle;
 }
+.center {
+    text-align: center;
+}
+.table thead>tr>th.table-cell{
+    vertical-align: middle;   
+}
+.table tbody>tr>th.table-cell{
+    vertical-align: middle;   
+}
+
+  img.signinlogo {
+    height: 50%;
+    width:50%;
+    margin: auto;
+  }
+
+@media screen and (max-width: 767px) {
+  .alt-table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #dddddd;
+    -webkit-overflow-scrolling: touch;
+  }

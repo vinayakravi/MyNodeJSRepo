@@ -4,7 +4,9 @@ $(document).ready(function() {
 	})
 	var url = window.location.pathname;
 	$('ul.nav a[href="' + url + '"]').parent().addClass('active');
-	if (url == "/room2") populateDates();
+	if (url == "/room1") populateDates();
+	else if (url == "/room2") populateDates();
+
 
 });
 Date.prototype.yyyymmdd = function() {
@@ -118,7 +120,7 @@ function saveWeek() {
 	//console.log(timeslots);
 	var weekObj = {
 		startDate: pageDate.yyyymmdd(),
-		roomid: 2,
+		roomid: roomid,
 		slots: timeslots
 	};
 
@@ -150,7 +152,8 @@ function clearWeek() {
 }
 function getWeek() {
 	$.getJSON("/week", {
-		startDate: pageDate.yyyymmdd()
+		startDate: pageDate.yyyymmdd(),
+		"roomid":roomid
 	}, function(result) {
 		if ($.isEmptyObject(result)) {
 			//console.log('empty');

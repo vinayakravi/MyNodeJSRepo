@@ -4,8 +4,9 @@ block content
 	div.container
 		div.row
 			div.col-sm-6.col-md-4.col-md-offset-4
-				h1.text-center.login-title Sign in to RoomBook
+				h1.text-center.login-title Sign in to Perficient NYC RoomBook
 					div.account-wall
+						img.img-responsive.signinlogo(src="/images/vertical-logo-with-tag.jpg")
 						form.form-signin(action='/login', method='POST')
 							label.sr-only(for="inputUsername") Username
 							input(type='text', id='inputUsername',name='username' class='form-control top', placeholder='Username',required, autofocus)

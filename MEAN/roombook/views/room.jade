@@ -1,0 +1,43 @@
+h3=description
+div.row
+	div.col-md-6
+		div.btn-group.pull-left
+			button.btn.btn-primary(onclick="previousWeek()") prev
+			button.btn.btn-default(onclick="thisWeek()") This week
+			button.btn.btn-primary(onclick="nextWeek()") next
+	div.col-md-6
+		div.pull-right
+			button.btn.btn-success(onclick="saveWeek()") Save
+br
+div.alt-table-responsive
+	table.table.table-bordered
+		colgroup
+			col.col-xs-2
+			col.col-xs-2
+			col.col-xs-2
+			col.col-xs-2
+			col.col-xs-2
+			col.col-xs-2
+		thead
+			- var days = ['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday']
+			tr
+				th.table-cell Time
+				each val in days
+					th.table-cell=val
+						br
+						small
+							span(id="#{val}",style="opacity:0.5") 8 Mar	
+		tbody
+			- var n = 8
+			while n <= 17
+				tr
+					th.active.table-cell(scope="row", id="id#{n}")
+						if n<12
+							span=n + ":00 AM"
+						else if n==12
+							span 12:00 PM
+						else
+							span=n-12 + ":00 PM"
+					each val in days
+						td.table-cell(id="#{val+n}", day="#{val}" time = "#{n}" onclick="selectCell(this)" )
+					- n++

@@ -23,7 +23,7 @@ module.exports = function(passport) {
 
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/home',
+		successRedirect: '/room1',
 		failureRedirect: '/',
 		failureFlash: true
 	}));
@@ -37,7 +37,7 @@ module.exports = function(passport) {
 
 	/* Handle Registration POST */
 	router.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/home',
+		successRedirect: '/room1',
 		failureRedirect: '/signup',
 		failureFlash: true
 	}));
@@ -45,6 +45,12 @@ module.exports = function(passport) {
 	/* GET Home Page */
 	router.get('/home', isAuthenticated, function(req, res) {
 		res.render('home', {
+			user: req.user
+		});
+	});
+	/* GET ROOM 1 */
+	router.get('/room1', isAuthenticated, function(req, res) {
+		res.render('room1', {
 			user: req.user
 		});
 	});
@@ -71,9 +77,10 @@ module.exports = function(passport) {
 
 		// Delete the _id property, otherwise Mongo will return a "Mod on _id not allowed" error
 		delete upsertData._id;
-		
+
 		WeeklySchedule.findOneAndUpdate({
-			startDate: newWeek.startDate
+			startDate: newWeek.startDate,
+			roomid: newWeek.roomid
 		}, upsertData, {
 			upsert: true
 		}, function(err) {
@@ -89,8 +96,10 @@ module.exports = function(passport) {
 	});
 	router.get('/week', function(req, res) {
 		var startDate = req.query.startDate;
+		var roomid = req.query.roomid;
 		WeeklySchedule.find({
-			"startDate": startDate
+			"startDate": startDate,
+			"roomid":roomid
 		}, function(err, week) {
 			if (err) throw err;
 
