@@ -33,18 +33,20 @@ body {
   z-index: 2;
 }
 .form-signin .top {
-  margin-bottom: -1px;
+  /*margin-bottom: -1px;
   border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;*/
 }
 .form-signin .bottom {
-  margin-bottom: 30px;
+  margin-bottom: 30px;/*
   border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-top-right-radius: 0;*/
 }
 .form-signin .middle {
+  /*
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  */
 }

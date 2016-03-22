@@ -17,6 +17,13 @@ module.exports = function(passport){
                         console.log('Error in SignUp: '+err);
                         return done(err);
                     }
+                    var passcode = req.body.passcode;
+                    
+
+                    if(!(passcode.toUpperCase()=="PERFICIENT421")) {
+                        
+                        return done(null, false, req.flash('message','Incorrect passcode'));
+                    }
                     // already exists
                     if (user) {
                         console.log('User already exists with username: '+username);

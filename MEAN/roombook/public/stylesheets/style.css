@@ -42,7 +42,7 @@ a {
     display: block;
     margin-top: 10px;
 }
-h1.error-message{
+.error-message{
     color: red;
 }
 ul.user-details{
@@ -64,7 +64,9 @@ ul.user-details{
 .table tbody>tr>th.table-cell{
     vertical-align: middle;   
 }
-
+.error {
+    font-size:8pt;
+}
   img.signinlogo {
     height: 50%;
     width:50%;
