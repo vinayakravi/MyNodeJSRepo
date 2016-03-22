@@ -1,6 +1,48 @@
 extends layout
 block content
 	div.container
+		script.
+			var username = "#{user.username}";
+			var email = "#{user.email}";
+			var roomid = 2;
 		include nav.jade
-		
-		p room 2
+		div.row
+			div.col-md-6
+				div.btn-group.pull-left
+					button.btn.btn-primary(onclick="previousWeek()") prev
+					button.btn.btn-default(onclick="thisWeek()") This week
+					button.btn.btn-primary(onclick="nextWeek()") next
+			
+			div.col-md-6
+				div.pull-right
+					button.btn.btn-success(onclick="saveWeek()") Save
+		br
+		div.table-responsive
+			table.table.table-bordered
+				thead
+					- var days = ['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday']
+					tr
+						th.col-md-2(style="vertical-align:middle;") Time
+						each val in days
+							th.col-md-2=val
+								br
+								small
+									span(id="#{val}",style="opacity:0.5") 8 Mar
+						
+				tbody
+					- var n = 8
+					while n <= 17
+						tr
+							th.active(scope="row", id="id#{n}")
+								if n<12
+									span=n + ":00 AM"
+								else if n==12
+									span 12:00 PM
+								else
+									span=n-12 + ":00 PM"
+							each val in days
+								td.table-cell(id="#{val+n}", day="#{val}" time = "#{n}" onclick="selectCell(this)")
+							- n++
+
+					
+

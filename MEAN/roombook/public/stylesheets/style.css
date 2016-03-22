@@ -48,3 +48,11 @@ h1.error-message{
 ul.user-details{
     list-style: none;
 }
+.table-cell {
+    color:gray;
+    font-size: 8pt;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: center;
+    vertical-align: middle;
+}
