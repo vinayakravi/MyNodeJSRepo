@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1= title
+  h3 Current Spot
+  p.
+    Floor: #{content.floor}<br> 
+    Direction: #{content.direction}
+  h3 Update
+  form(name="update-form", method="post",action="/saveData")
+        div.input
+            label(for='floor') Floor
+            select(name="floor",id="floor")
+              -for(var i = 1;i<=6;i++){
+              option(value="#{i}", selected=content.floor==i) #{i}
+              -}
+            br
+            br
+            span.label Direction
+            br
+            input(type='radio', id='direction1', value='Up', name='direction',checked=content.direction=='Up')
+            label(for='up') Up
+            input(type='radio', id='direction2', value='Down', name='direction',checked=content.direction=='Down')
+            label(for='down') Down
+            br
+            br
+        div.actions
+            input(type="submit", value="Save")
+
+
